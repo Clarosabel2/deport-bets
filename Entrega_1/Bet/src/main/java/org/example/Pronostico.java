@@ -11,7 +11,6 @@ public class Pronostico {
     public static int points(){
         int sumpoints=0;
         int i=0,a=0;
-
         for(Partido match: Partido.ResultP){
             sumpoints++;
         }

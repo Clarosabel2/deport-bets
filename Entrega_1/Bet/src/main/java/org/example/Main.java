@@ -8,7 +8,8 @@ public class Main {
         System.out.println("Puntaje: "+Pronostico.points());
         System.out.println("Parditos acertados: ");
         for(Partido match:Partido.ResultP){
-            System.out.println("Nº:"+match.getIdMatch()+" Gana:"+match.getTeamwinner().name);
+            System.out.println("Nº:"+match.getIdMatch()+
+                    " Gana:"+match.getTeamwinner().name);
         }
     }
 }
