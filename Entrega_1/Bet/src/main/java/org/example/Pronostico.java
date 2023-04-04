@@ -10,13 +10,10 @@ public class Pronostico {
     }
     public static int points(){
         int sumpoints=0;
-        ResultadoEnum.teamsresult();
-        for(Equipo team : Partido.teamR){
-            for(Equipo teamP: Partido.teamP){
-                if(team.getDescription().equals(teamP.getDescription())){
-                    sumpoints++;
-                }
-            }
+        int i=0,a=0;
+
+        for(Partido match: Partido.ResultP){
+            sumpoints++;
         }
         return sumpoints;
     }

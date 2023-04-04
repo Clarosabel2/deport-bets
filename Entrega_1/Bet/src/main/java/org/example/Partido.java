@@ -11,6 +11,7 @@ import java.util.List;
 public class Partido {
     public static List<Equipo>teamR= new ArrayList<>();
     public static List<Equipo>teamP= new ArrayList<>();
+    public static List<Partido>ResultP = new ArrayList<>();
     @Setter
     @Getter
     private int idMatch;
@@ -26,6 +27,9 @@ public class Partido {
     @Setter
     @Getter
     private int cntglsTeam2;
+    @Getter
+    @Setter
+    private Equipo teamwinner;
 
     public Partido(int id, Equipo t1, int cntgT1, Equipo t2, int cntgT2){
         this.idMatch=id;
@@ -33,41 +37,34 @@ public class Partido {
         this.cntglsTeam1=cntgT1;
         this.Team2=t2;
         this.cntglsTeam2=cntgT2;
+        this.teamwinner=null;
     }
     public static void result(){
-        for (Partido match : Data.matches) {
-            if (match.getCntglsTeam1() > match.getCntglsTeam2()) {
-                Equipo tw = new Equipo(match.getTeam1().name);
-                tw.setDescription("Gana "+match.idMatch);
-                teamR.add(tw);
-            }
-            if (match.getCntglsTeam2() > match.getCntglsTeam1()) {
-                Equipo tw = new Equipo(match.getTeam2().name);
-                tw.setDescription("Gana "+match.idMatch);
-                teamR.add(tw);
-            }
-            if(match.getCntglsTeam1()== match.getCntglsTeam2()){
-                Equipo tw = new Equipo(null);
-                tw.setDescription("Empate "+match.idMatch);
-                teamR.add(tw);
-            }
-        }
-        for (Partido match : Data.usuPronostic) {
-            if (match.getCntglsTeam1() > match.getCntglsTeam2()) {
-                Equipo twP = new Equipo(match.getTeam1().name);
-                twP.setDescription("Gana "+match.idMatch);
-                teamP.add(twP);
-            }
-            if (match.getCntglsTeam2() > match.getCntglsTeam1()) {
-                Equipo twP = new Equipo(match.getTeam2().name);
-                twP.setDescription("Gana "+match.idMatch);
-                teamP.add(twP);
-            }
-            if(match.getCntglsTeam1()== match.getCntglsTeam2()){
-                Equipo twP = new Equipo(null);
-                twP.setDescription("Empate "+match.idMatch);
-                teamP.add(twP);
+        for (Partido matchR : Data.matches) {
+            for (Partido matchP : Data.usuPronostic) {
+                if(matchR.getIdMatch()==matchP.getIdMatch()){
+                    if(matchP.getCntglsTeam1()>matchP.getCntglsTeam2()){
+                        if(matchR.getCntglsTeam1()>matchR.getCntglsTeam2()){
+                            matchR.setTeamwinner(matchR.getTeam1());
+                            ResultP.add(matchR);
+                        }
+                    }
+                    if(matchP.getCntglsTeam1()<matchP.getCntglsTeam2()){
+                        if(matchR.getCntglsTeam1()<matchR.getCntglsTeam2()){
+                            matchR.setTeamwinner(matchR.getTeam2());
+                            ResultP.add(matchR);
+                        }
+                    }
+                    if(matchP.getCntglsTeam1()==matchP.getCntglsTeam2()){
+                        if(matchR.getCntglsTeam1()==matchR.getCntglsTeam2()){
+                            Equipo team = new Equipo("Empate");
+                            matchR.setTeamwinner(team);
+                            ResultP.add(matchR);
+                        }
+                    }
+                }
             }
         }
+
     }
 }

@@ -53,5 +53,6 @@ public class Data {
             a++;
         }
         BRpredict.close();
+        ResultadoEnum.teamsresult();
     }
 }
