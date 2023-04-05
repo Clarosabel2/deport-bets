@@ -6,9 +6,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Data.loadData();
         System.out.println("Puntaje: "+Pronostico.points());
+        System.out.println("Porcentaje de aciertos: "+((Pronostico.points()*100)/Partido.cntmatchs)+"%");
         System.out.println("Parditos acertados: ");
         for(Partido match:Partido.ResultP){
-            System.out.println("Nº:"+match.getIdMatch()+
+            System.out.println("     Nº:"+match.getIdMatch()+
                     " Gana:"+match.getTeamwinner().name);
         }
     }

@@ -9,8 +9,7 @@ import java.util.List;
 
 @NoArgsConstructor
 public class Partido {
-    public static List<Equipo>teamR= new ArrayList<>();
-    public static List<Equipo>teamP= new ArrayList<>();
+    public static int cntmatchs;
     public static List<Partido>ResultP = new ArrayList<>();
     @Setter
     @Getter
@@ -41,6 +40,7 @@ public class Partido {
     }
     public static void result(){
         for (Partido matchR : Data.matches) {
+            cntmatchs++;
             for (Partido matchP : Data.usuPronostic) {
                 if(matchR.getIdMatch()==matchP.getIdMatch()){
                     if(matchP.getCntglsTeam1()>matchP.getCntglsTeam2()){
