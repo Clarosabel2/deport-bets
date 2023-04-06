@@ -11,6 +11,7 @@ public class Data {
     public static List<Partido>matches = new ArrayList<>();
     public static List<Partido>usuPronostic = new ArrayList<>();
     public static void loadData()throws IOException{
+        //Se cargan los datos de los csv y se crean los objetos
         File rutaPronosticos = new File("D:\\pronostico.csv");
         File rutaResultados = new File("D:\\resultados.csv");
         String[]Vline;
