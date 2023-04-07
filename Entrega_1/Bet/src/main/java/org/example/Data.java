@@ -1,17 +1,13 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
     public static List<Partido>matches = new ArrayList<>();
     public static List<Partido>usuPronostic = new ArrayList<>();
-    public static void loadData()throws IOException{
-        //Se cargan los datos de los csv y se crean los objetos
+    public static void loadData()throws IOException , Exception{
         File rutaPronosticos = new File("D:\\pronostico.csv");
         File rutaResultados = new File("D:\\resultados.csv");
         String[]Vline;
@@ -33,11 +29,24 @@ public class Data {
         a=0;
         BufferedReader BRpredict = new BufferedReader(new FileReader(rutaPronosticos));
         while((line=BRpredict.readLine())!=null){
+            int i=2, flag=0;
             if(a!=0){
                 Vline=line.split(";");
                 Equipo team1 = new Equipo(Vline[1]);
                 Equipo team2 = new Equipo(Vline[5]);
                 int cntgls1=0,cntgls2=0;
+                if(Vline[2]=="" &&Vline[3]=="" && Vline[4]==""){
+                    throw new Exception("(Archivo Pronostico) Eliga una opcion. IDPartido: Nª"+a);
+                }
+                while(i!=4){
+                    if(Vline[i].equals("x")){
+                        flag++;
+                    }
+                    i++;
+                }
+                if(flag>1){
+                    throw  new Exception("(Archivo Pronostico) Solo puede elegir una opcion, IDPartido: Nª"+a);
+                }
                 if(Vline[2].equals("x")){
                     cntgls1=1;
                 }
