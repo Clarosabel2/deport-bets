@@ -13,8 +13,8 @@ public class Data {
         String[]Vline;
         String line;
         int a=0;
-        BufferedReader BRresult = new BufferedReader(new FileReader(rutaResultados));
-        while((line=BRresult.readLine())!=null){
+        BufferedReader BResult = new BufferedReader(new FileReader(rutaResultados));
+        while((line=BResult.readLine())!=null){
             if(a!=0){
                 Vline=line.split(";");
                 Equipo team1 = new Equipo(Vline[1]);
@@ -25,36 +25,32 @@ public class Data {
             }
             a++;
         }
-        BRresult.close();
+        BResult.close();
         a=0;
-        BufferedReader BRpredict = new BufferedReader(new FileReader(rutaPronosticos));
-        while((line=BRpredict.readLine())!=null){
+        BufferedReader BPredict = new BufferedReader(new FileReader(rutaPronosticos));
+        while((line=BPredict.readLine())!=null){
             int i=2, flag=0;
             if(a!=0){
                 Vline=line.split(";");
-                Equipo team1 = new Equipo(Vline[1]);
-                Equipo team2 = new Equipo(Vline[5]);
-                int cntgls1=0,cntgls2=0;
-                if(Vline[2]=="" &&Vline[3]=="" && Vline[4]==""){
-                    throw new Exception("(Archivo Pronostico) Eliga una opcion " +
-                            "en el partido IDPartido: Nª"+a);
-                }
                 while(i!=5){
                     if(Vline[i].equals("x")){
                         flag++;
                     }
                     i++;
                 }
+                if(flag==0){
+                    throw new Exception("(Archivo Pronostico) Eliga una opcion " +
+                            "en el partido IDPartido: Nª"+a);
+                }
                 if(flag>1){
                     throw  new Exception("(Archivo Pronostico) Solo puede elegir una opcion " +
                             "en el partido IDPartido: Nª"+a);
                 }
+                Equipo team1 = new Equipo(Vline[1]);
+                Equipo team2 = new Equipo(Vline[5]);
+                int cntgls1=0,cntgls2=0;
                 if(Vline[2].equals("x")){
                     cntgls1=1;
-                }
-                if(Vline[3].equals("x")){
-                    cntgls1=1;
-                    cntgls2=1;
                 }
                 if(Vline[4].equals("x")){
                     cntgls2=1;
@@ -64,7 +60,7 @@ public class Data {
             }
             a++;
         }
-        BRpredict.close();
+        BPredict.close();
         ResultadoEnum.teamsresult();
     }
 }

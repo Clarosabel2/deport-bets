@@ -1,0 +1,49 @@
+﻿Participante;idPartido;Equipo1;gana1;empata;gana2;Equipo2
+Mariana;1;Qatar;;;x;Ecuador
+Mariana;2;England;x;;;Iran
+Mariana;3;Senegal;;x;;Netherlands
+Mariana;4;USA;x;;;Wales
+Mariana;5;Argentina;;;x;Saudi Arabia
+Mariana;6;Denmark;;x;;Tunisia
+Roberto;7;Mexico;;;x;Poland
+Roberto;8;France;;;x;Australia
+Roberto;9;Morocco;x;;;Croatia
+Roberto;10;Germany;;x;;Japan
+Roberto;11;Spain;x;;;Costa Rica
+Juan;12;Belgium;;;x;Canada
+Juan;13;Switzerland;;x;;Cameroon
+Juan;14;Uruguay;;;x;Korea Republic
+Juan;15;Portugal;;;x;Ghana
+Juan;16;Brazil;x;;;Serbia
+Juan;17;Wales;;x;;Iran
+Lucas;18;Qatar;x;;;Senegal
+Lucas;19;Netherlands;;;x;Ecuador
+Lucas;20;England;;x;;USA
+Lucas;21;Tunisia;;;x;Australia
+Lucas;22;Poland;;;x;Saudi Arabia
+Lucas;23;France;x;;;Denmark
+Lucas;24;Argentina;;x;;Mexico
+Lucas;25;Japan;x;;;Costa Rica
+Lucas;26;Belgium;;;x;Morocco
+Marta;27;Croatia;;x;;Canada
+Marta;28;Spain;;;x;Germany
+Marta;29;Cameroon;;;x;Serbia
+David;30;Korea Republic;x;;;Ghana
+David;31;Brazil;;x;;Switzerland
+David;32;Portugal;x;;;Uruguay
+David;33;Ecuador;;;x;Senegal
+David;34;Netherlands;;x;;Qatar
+David;35;Wales;;;x;England
+Santi;36;Iran;;;x;USA
+Santi;37;Australia;x;;;Denmark
+Santi;38;Tunisia;;x;;France
+Santi;39;Poland;x;;;Argentina
+Santi;40;Saudi Arabia;;;x;Mexico
+Sebastian;41;Croatia;;x;;Belgium
+Sebastian;42;Canada;;;x;Morocco
+Sebastian;43;Japan;;;x;Spain
+Sebastian;44;Costa Rica;x;;;Germany
+Sebastian;45;Ghana;;x;;Uruguay
+Sebastian;46;Korea Republic;x;;;Portugal
+Sebastian;47;Serbia;;;x;Switzerland
+Sebastian;48;Cameroon;;x;;Brazil
