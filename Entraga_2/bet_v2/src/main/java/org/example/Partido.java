@@ -6,6 +6,9 @@ import lombok.Setter;
 public class Partido {
     @Getter
     @Setter
+    private int idmatch;
+    @Getter
+    @Setter
     private Equipo team1;
     @Getter
     @Setter
@@ -16,7 +19,8 @@ public class Partido {
     @Getter
     @Setter
     private int cntglstm2;
-    public Partido(Equipo t1, int glst1, Equipo t2, int glst2){
+    public Partido(int idmatch,Equipo t1, int glst1, Equipo t2, int glst2){
+        this.idmatch=idmatch;
         this.team1=t1;
         this.cntglstm1=glst1;
         this.team2=t2;

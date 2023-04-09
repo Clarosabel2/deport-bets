@@ -1,7 +1,5 @@
 package org.example;
 
-import java.io.IOException;
-
 public class Main {
     public static void main(String[] args) {
         try {
@@ -11,11 +9,10 @@ public class Main {
             System.out.println("Parditos acertados: ");
             for(Partido match:Partido.ResultP){
                 System.out.println("     Nº:"+match.getIdMatch()+
-                        " Gana:"+match.getTeamwinner().name);
+                        "||Gana:"+match.getTeamwinner().name);
             }
         } catch (Exception e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
-
     }
 }

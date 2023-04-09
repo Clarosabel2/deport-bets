@@ -11,7 +11,6 @@ public class Equipo {
     @Setter
     String description;
     public Equipo(String _name){
-
         this.name=_name;
         this.description=null;
     }

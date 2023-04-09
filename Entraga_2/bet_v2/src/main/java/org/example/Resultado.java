@@ -1,7 +1,17 @@
 package org.example;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@NoArgsConstructor
 public class Resultado {
-    String winner;
-    String loser;
-    String draw;
+    @Getter
+    @Setter
+    private Equipo winner;
+    @Getter
+    @Setter
+    private Equipo loser;
+    @Getter
+    @Setter
+    private boolean draw;
 }

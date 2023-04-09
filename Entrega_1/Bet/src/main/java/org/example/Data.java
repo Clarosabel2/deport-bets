@@ -7,7 +7,7 @@ import java.util.List;
 public class Data {
     public static List<Partido>matches = new ArrayList<>();
     public static List<Partido>usuPronostic = new ArrayList<>();
-    public static void loadData()throws IOException , Exception{
+    public static void loadData()throws  Exception{
         File rutaPronosticos = new File("D:\\pronostico.csv");
         File rutaResultados = new File("D:\\resultados.csv");
         String[]Vline;
@@ -36,16 +36,18 @@ public class Data {
                 Equipo team2 = new Equipo(Vline[5]);
                 int cntgls1=0,cntgls2=0;
                 if(Vline[2]=="" &&Vline[3]=="" && Vline[4]==""){
-                    throw new Exception("(Archivo Pronostico) Eliga una opcion. IDPartido: Nª"+a);
+                    throw new Exception("(Archivo Pronostico) Eliga una opcion " +
+                            "en el partido IDPartido: Nª"+a);
                 }
-                while(i!=4){
+                while(i!=5){
                     if(Vline[i].equals("x")){
                         flag++;
                     }
                     i++;
                 }
                 if(flag>1){
-                    throw  new Exception("(Archivo Pronostico) Solo puede elegir una opcion, IDPartido: Nª"+a);
+                    throw  new Exception("(Archivo Pronostico) Solo puede elegir una opcion " +
+                            "en el partido IDPartido: Nª"+a);
                 }
                 if(Vline[2].equals("x")){
                     cntgls1=1;
