@@ -1,6 +1,6 @@
 package org.example;
 
 public class Ronda {
-    String nro;
-    Partido[] matches;
+    private int nroRonda;
+    private Partido[] matches;
 }

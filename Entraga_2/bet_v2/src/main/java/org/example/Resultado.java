@@ -7,6 +7,9 @@ import lombok.Setter;
 public class Resultado {
     @Getter
     @Setter
+    private int IDMatch;
+    @Getter
+    @Setter
     private Equipo winner;
     @Getter
     @Setter
