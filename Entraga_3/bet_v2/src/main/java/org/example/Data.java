@@ -43,14 +43,16 @@ public class Data{
                 }
                 Result.add(rslt);
             }
+            Ronda rd = new Ronda(4,matches.toArray(new Partido[matches.size()]));
+            System.out.println(rd.getMatches().length);
             int i=0,a=0;
             String nombre;
-            ArrayList<String>ListaNombr = new ArrayList<>();
+            ArrayList<String>ListaNombre = new ArrayList<>();
             while(RSPronostic.next()) {
                 nombre = RSPronostic.getString(1);
                 //Se crean objetos "Personas"
-                if (!ListaNombr.contains(nombre)) {//Agregando participante nuevo sin repetir
-                    ListaNombr.add(nombre);
+                if (!ListaNombre.contains(nombre)) {//Agregando participante nuevo sin repetir
+                    ListaNombre.add(nombre);
                     Persona pers = new Persona(i,nombre);
                     i++;
                     ListPer.add(pers);
@@ -65,40 +67,19 @@ public class Data{
                 }
                 else if(RSPronostic.getInt("empate")==1){
                     rsltproc.setDraw(true);
-                    rsltproc.setWinner(null);
-                    rsltproc.setLoser(null);
                 }
                 else if(RSPronostic.getInt("gana2")==1){
                     rsltproc.setWinner(team2);
                     rsltproc.setLoser(team1);
                 }
-                /*System.out.println(ListPer.get(i-1).getName() + " Match ID: " + Result.get(a).getIDMatch());
                 if(!rsltproc.isDraw()) {
-
                     if(Result.get(a).getWinner()!=null) {
-
-                        System.out.println("Ganador en resultados en la posicion :" + a + " " + Result.get(a).getWinner().getName());
-
-                    }else System.out.println("Empate en posicion: " + a);
-
-                    System.out.println("Ganador en pronostico: " + rsltproc.getWinner().getName());
-
-                }else System.out.println("Empate");*/
-                if(!rsltproc.isDraw()) {
-                    //Se corrobora que los atributos no sean nulos y que concida con la precicion del participante
-                    //En el caso que, en las lineas 91 95 101 sea true, se suma un punto al percipante y se actuliza en la lista de "Personas"
-                    if(Result.get(a).getWinner()!=null) {
-                        if(rsltproc.getWinner().getName().equals(Result.get(a).getWinner().getName())){
-                            ListPer.get(i-1).setPoints(ListPer.get(i-1).getPoints()+1);
-                        }
-                    }
-                    if(Result.get(a).getLoser()!=null){
-                        if(rsltproc.getLoser().getName().equals(Result.get(a).getLoser().getName())){
-                            ListPer.get(i-1).setPoints(ListPer.get(i-1).getPoints()+1);
+                        if (rsltproc.getWinner().getName().equals(Result.get(a).getWinner().getName())) {
+                            ListPer.get(i - 1).setPoints(ListPer.get(i - 1).getPoints() + 1);
                         }
                     }
                 }else{
-                    if(rsltproc.isDraw()==true && Result.get(a).isDraw()==true){
+                    if(Result.get(a).isDraw()){
                         ListPer.get(i-1).setPoints(ListPer.get(i-1).getPoints()+1);
                     }
                 }
