@@ -1,5 +1,7 @@
 package org.example;
 
+import java.sql.SQLOutput;
+
 public class Main {
     public static void main(String[] args) {
         try{
@@ -27,6 +29,7 @@ public class Main {
                         "\n Puntaje:"+per.getPoints());
                 System.out.println("------");
             }
+            System.out.println(Data.uploadData());
         }catch (Exception e){
             System.out.println(e.getMessage());
         }

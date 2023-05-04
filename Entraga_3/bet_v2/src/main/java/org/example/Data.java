@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class Data{
     public static List<Pronostico>Proc = new ArrayList<>();
-    public static List<Partido>matches = new ArrayList<>();
     public static List<Persona>ListPer = new ArrayList<>();
     public static List<Resultado>Result = new ArrayList<>();
     public static void CargarDatos() throws Exception{//Carga de los datos
@@ -26,7 +25,6 @@ public class Data{
             Equipo team1 = new Equipo(RSResult.getString("TEAM1"));
             Equipo team2 = new Equipo(RSResult.getString("TEAM2"));
             Partido match = new Partido(RSResult.getInt("IDMatch"),team1,RSResult.getInt("CNTGLS1"),team2,RSResult.getInt("CNTGLS2"));
-            matches.add(match);
             Resultado rslt = new Resultado();
             rslt.setIDMatch(RSResult.getInt("IDMatch"));
             if(RSResult.getInt("CNTGLS1")>RSResult.getInt("CNTGLS2")){
@@ -44,7 +42,6 @@ public class Data{
             Proc.add(proc);
             Result.add(rslt);
         }
-        Ronda rd = new Ronda(4,matches.toArray(new Partido[matches.size()]));
         int i=0,a=0,cntbets=0;
         String nombre;
         ArrayList<String>ListaNombre = new ArrayList<>();
@@ -91,6 +88,29 @@ public class Data{
         oCn.close();
         oCn2.close();
         expoints();
+    }
+    public static String uploadData(){
+        try{
+            String url="jdbc:mysql://db4free.net:3306/argprom42023";
+            String username="chrisbel2000";
+            String password="3rd@gJk7#NgV2Ha";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection oCn =  DriverManager.getConnection(url,username,password);
+            for(Persona person : ListPer){
+                PreparedStatement smt = oCn.prepareStatement("INSERT INTO PLAYER VALUES (?,?,?,?)");
+                smt.setInt(1,person.getIdperson());
+                smt.setString(2,person.getName());
+                smt.setInt(3,person.getCntbets());
+                smt.setInt(4,person.getPoints());
+                smt.executeUpdate();
+                smt.close();
+            }
+            oCn.close();
+            return "SE SUBIERON CORRECTAMENTE LOS DATOS EN LA DB";
+        }catch (Exception e){
+            return "ERROR EN SUBIR LOS DATOS EN LA DB: "+e.getMessage();
+        }
+
     }
     private static void expoints(){
         for(Persona person: ListPer){
