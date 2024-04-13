@@ -11,9 +11,9 @@ public class Data{
     public static List<Persona>ListPer = new ArrayList<>();
     public static List<Resultado>Result = new ArrayList<>();
     public static void CargarDatos() throws Exception{//Carga de los datos
-        String url="jdbc:mysql://db4free.net:3306/argprom42023";
-        String username="chrisbel2000";
-        String password="3rd@gJk7#NgV2Ha";
+        String url="";
+        String username="";
+        String password="";
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection oCn =  DriverManager.getConnection(url,username,password);
         Connection oCn2 =  DriverManager.getConnection(url,username,password);
